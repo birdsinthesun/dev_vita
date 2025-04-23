@@ -1,0 +1,36 @@
+{
+    "name": "birdsinthesun/dev_vita",
+    "type": "contao-bundle",
+    "description": "Vita für Developer, ganz einfach von GitHub über die composer.json (wird gerade ganz frisch gecoded, dauert noch paar Tage)",
+    "keywords":["contao","github","vita","portfolio","referenzen","developer","programmierer","api","dev_vita"],
+    "homepage":"https://github.com/birdsinthesun/dev_vita",
+    "license": "MIT",
+    "version":"main",
+     "minimum-stability": "stable",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Monique Hahnefeld",
+            "email": "info@birdsinthesun.de",
+            "homepage":"https://birdsinthesun.de",
+            "role":"Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "symfony/routing":"^6.2",
+        "contao/core-bundle": "5.5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bits\\DevVitaBundle\\": "src/"
+        }
+    },
+  "extra": {
+        "contao-manager-plugin": "Bits\\DevVitaBundle\\ContaoManager\\Plugin"
+    }
+    
+  }
+    
+    
+}
