@@ -1,6 +1,6 @@
 <?php
 
-namespace Bits\FlyUxBundle\Controller;
+namespace Bits\DevVitaBundle\Controller;
 
 
 use Doctrine\DBAL\Connection;
@@ -21,9 +21,11 @@ class ContentSortingController extends AbstractController
         $this->connection = $connection;
     }
 
-    #[Route('/contao/_flyux/update-sorting', name: 'flyux_update_sorting', methods: ['POST'])]
+    #[Route('/contao/_devvita/lazy-load', name: 'devvita_lazy_load', methods: ['POST'])]
     public function __invoke(Request $request): JsonResponse
     {
+        
+        return;
         try {
             $data = json_decode($request->getContent(), true);
 

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    Bits\FlyUxBundle\FlyUxBundle::class => ['all' => true],
+    Bits\DevVitaBundle\DevVitaBundle::class => ['all' => true],
 ];

@@ -3,45 +3,17 @@ services:
         autowire: true
         autoconfigure: true
         
-    fly_ux_bundle:
-        class: 'Bits\FlyUxBundle\FlyUxBundle'
-        public: true
-    
-    Bits\FlyUxBundle\EventListener\AddBackendAssetsListener:
-        arguments:
-            $scopeMatcher: '@contao.routing.scope_matcher'
-        tags:
-            - { name: 'kernel.event_listener', event: 'kernel.request', priority: 1 }
-        
-    Bits\FlyUxBundle\Driver\DC_Media:
-        class: Bits\FlyUxBundle\Driver\DC_Media
-        arguments: ['@service_container']
+    dev_vita_bundle:
+        class: 'Bits\DevVitaBundle\DevVitaBundle'
         public: true
         
-    Bits\FlyUxBundle\Controller\:
+    Bits\DevVitaBundle\Controller\:
         resource: '../src/Controller' # Pfad relativ zur services.yaml
         tags: ['controller.service_arguments']
         autowire: true
         autoconfigure: true
-  
-    
-    Bits\FlyUxBundle\Driver\DC_Content:
-        class: Bits\FlyUxBundle\Driver\DC_Content
-        arguments: ['@service_container']
-        public: true
-
-    Bits\FlyUxBundle\Widgets\ModuleWizard:
-        tags:
-            - { name: 'contao.backend.widget', inputType: 'flyWizard' }
-        arguments: []
         
-    Bits\FlyUxBundle\Migration\InstallFlyUx:
-        arguments:
-            $connection: '@database_connection'
-        tags:
-            - { name: contao.migration }
-        
-    Bits\FlyUxBundle\:
+    Bits\DevVitaBundle\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
