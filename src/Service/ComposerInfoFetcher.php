@@ -1,6 +1,6 @@
 <?php
 
-namespace DevVita\Service;
+namespace Bits\DevVitaBundle\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 

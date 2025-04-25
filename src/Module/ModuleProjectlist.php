@@ -1,17 +1,19 @@
 <?php
 
-namespace DevVita\Module;
+namespace Bits\DevVitaBundle\Module;
 
 use Contao\CoreBundle\Module\AbstractFrontendModule;
 use DevVita\Service\ComposerInfoFetcher;
 use Contao\Database;
+use Contao\System;
+use Contao\Throwable;
 use Symfony\Component\HttpFoundation\Response;
 
-class ModuleDevVitaList extends AbstractFrontendModule
+class ModuleProjectlist extends AbstractFrontendModule
 {
     protected function getResponse(array $templateData, array $module): Response
     {
-        $fetcher = \System::getContainer()->get(ComposerInfoFetcher::class);
+        $fetcher = System::getContainer()->get(ComposerInfoFetcher::class);
         $entries = Database::getInstance()
             ->prepare("SELECT * FROM tl_dev_vita ORDER BY sorting")
             ->execute();
@@ -30,12 +32,12 @@ class ModuleDevVitaList extends AbstractFrontendModule
                     'require' => $data['require'] ?? [],
                     'repo' => $row['repository'],
                 ];
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 $repos[] = ['error' => $e->getMessage(), 'repo' => $row['repository']];
             }
         }
 
-        return $this->render('@DevVita/dev_vita_list.html.twig', [
+        return $this->render('@Contao/project_list.html.twig', [
             'repos' => $repos,
         ]);
     }
