@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.4",
         "symfony/routing":"7.2.*",
-        "symfony/http-client": "6.*",
+        "symfony/http-client": "7.2.*",
         "contao/core-bundle": "5.5.*"
     },
     "autoload": {
