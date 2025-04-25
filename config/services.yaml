@@ -7,6 +7,10 @@ services:
         class: 'Bits\DevVitaBundle\DevVitaBundle'
         public: true
         
+    Bits\DevVitaBundle\Service\ComposerInfoFetcher:
+    arguments:
+      $githubToken: '%env(GITHUB_PAT)%'
+        
     Bits\DevVitaBundle\Controller\:
         resource: '../src/Controller' # Pfad relativ zur services.yaml
         tags: ['controller.service_arguments']

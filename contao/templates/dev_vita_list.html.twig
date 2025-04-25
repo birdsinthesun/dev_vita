@@ -1,0 +1,17 @@
+{% for repo in repos %}
+    {% if repo.error is defined %}
+        <div class="repo-error">
+            <strong>Fehler in {{ repo.repo }}:</strong> {{ repo.error }}
+        </div>
+    {% else %}
+        <div class="repo">
+            <h3>{{ repo.name }}</h3>
+            <p>{{ repo.description }}</p>
+            <ul>
+                {% for package, version in repo.require %}
+                    <li>{{ package }}: {{ version }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endfor %}
