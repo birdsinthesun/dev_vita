@@ -25,7 +25,9 @@ class ContentSortingController extends AbstractController
     public function __invoke(Request $request): JsonResponse
     {
         
-        return;
+        return new JsonResponse([
+                'success' => true
+            ], 200);
         try {
             $data = json_decode($request->getContent(), true);
 
