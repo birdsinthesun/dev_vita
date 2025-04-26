@@ -62,12 +62,13 @@ class ModuleProjectlist extends Module
             $token = $row['repo_type'] === 'private' ? $row['token'] :'';
 
             try {
-                $data = $fetcher->fetchComposerJson($row['contributor'], $row['repository'], $row['branch']);
+                $data = $fetcher->fetchComposerJson($row['contributor'], $row['repository'], $row['branch'],$row['token']);
                 $repos[] = [
                     'name' => $data['name'] ?? '',
                     'description' => $data['description'] ?? '',
+                    'keywords' => $data['keywords'] ?? [],
                     'require' => $data['require'] ?? [],
-                    'repo' => $row['repository'],
+                    'created_at' => $row['created_at'],
                 ];
             } catch (Throwable $e) {
                 $repos[] = ['error' => $e->getMessage(), 'repo' => $row['repository']];

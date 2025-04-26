@@ -8,18 +8,19 @@ use Symfony\Contracts\Service\ServiceSubscriberInterface;
 class ComposerInfoFetcher implements ServiceSubscriberInterface
 {
     private HttpClientInterface $client;
-    private string $githubToken;
 
     public function __construct(HttpClientInterface $client)
     {
         $this->client = $client;
-        $this->githubToken = 'ToDo';
     }
 
-    public function fetchComposerJson(string $owner, string $repo, string $branch = 'main'): array
+    public function fetchComposerJson(string $owner, string $repo, string $branch = 'main',$token): array
     {
         $response = $this->client->request('GET', "https://api.github.com/repos/$owner/$repo/contents/composer.json", [
-       
+            'headers' => [
+                    'Authorization' => 'Bearer ' . $token,
+                    'Accept' => 'application/vnd.github.v3+json',
+                ],
             'query' => ['ref' => $branch],
         ]);
 

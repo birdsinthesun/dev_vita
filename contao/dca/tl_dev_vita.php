@@ -19,12 +19,9 @@ $GLOBALS['TL_DCA']['tl_dev_vita'] = [
         ],
     ],
     'palettes' => [
-        '__selector__' => ['repo_type'],
-        'default' => '{general_legend},contributor,repository,branch,repo_type,created_at',
+     
+        'default' => '{general_legend},contributor,repository,branch,repo_type,token,created_at',
         
-    ],
-    'subpalettes' => [
-        'repo_type_private' => 'token',
     ],
     'fields' => [
         'id' => ['sql' => "int(10) unsigned NOT NULL auto_increment"],
