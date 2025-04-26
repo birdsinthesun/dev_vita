@@ -1,8 +1,9 @@
 <?php
+use Contao\DC_Table;
 
 $GLOBALS['TL_DCA']['tl_dev_vita'] = [
     'config' => [
-        'dataContainer' => 'Table',
+        'dataContainer' => DC_Table::class,
         'sql' => ['keys' => ['id' => 'primary']],
     ],
     'list' => [
@@ -19,7 +20,8 @@ $GLOBALS['TL_DCA']['tl_dev_vita'] = [
     ],
     'palettes' => [
         '__selector__' => ['repo_type'],
-        'default' => '{general_legend},contributor,repository,branch,repo_type,token,created_at;{meta_legend},sorting',
+        'default' => '{general_legend},contributor,repository,branch,repo_type,created_at;{meta_legend},sorting',
+        
     ],
     'subpalettes' => [
         'repo_type_private' => 'token',

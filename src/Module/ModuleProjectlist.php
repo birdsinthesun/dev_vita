@@ -2,16 +2,53 @@
 
 namespace Bits\DevVitaBundle\Module;
 
-use Contao\CoreBundle\Module\AbstractFrontendModule;
-use DevVita\Service\ComposerInfoFetcher;
+
+use Bits\DevVitaBundle\Service\ComposerInfoFetcher;
 use Contao\Database;
 use Contao\System;
 use Contao\Throwable;
+use Contao\Module;
+use Contao\BackendTemplate;
+use Contao\StringUtil;
 use Symfony\Component\HttpFoundation\Response;
 
-class ModuleProjectlist extends AbstractFrontendModule
+class ModuleProjectlist extends Module
 {
-    protected function getResponse(array $templateData, array $module): Response
+    
+    public function generate()
+	{
+		$request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+		if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
+		{
+			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate->wildcard = '### ' . $GLOBALS['TL_LANG']['FMD']['projectlist'][0] . ' ###';
+			$objTemplate->title = $this->headline;
+			$objTemplate->id = $this->id;
+			$objTemplate->link = $this->name;
+			$objTemplate->href = StringUtil::specialcharsUrl(System::getContainer()->get('router')->generate('contao_backend', array('do'=>'themes', 'table'=>'tl_module', 'act'=>'edit', 'id'=>$this->id)));
+
+			return $objTemplate->parse();
+		}
+
+		return $this->getResponse();
+	}
+    
+    
+    protected function compile()
+	{
+    
+        
+    
+    
+    
+    
+    
+    }
+    
+    
+    
+    protected function getResponse()
     {
         $fetcher = System::getContainer()->get(ComposerInfoFetcher::class);
         $entries = Database::getInstance()
@@ -22,7 +59,7 @@ class ModuleProjectlist extends AbstractFrontendModule
 
         while ($entries->next()) {
             $row = $entries->row();
-            $token = $row['repo_type'] === 'private' ? $row['token'] : $_ENV['GITHUB_PAT'];
+            $token = $row['repo_type'] === 'private' ? $row['token'] :'';
 
             try {
                 $data = $fetcher->fetchComposerJson($row['contributor'], $row['repository'], $row['branch']);
@@ -36,8 +73,8 @@ class ModuleProjectlist extends AbstractFrontendModule
                 $repos[] = ['error' => $e->getMessage(), 'repo' => $row['repository']];
             }
         }
-
-        return $this->render('@Contao/project_list.html.twig', [
+        $twig = System::getContainer()->get('twig');
+        return $twig->render('@Contao/project_list.html.twig', [
             'repos' => $repos,
         ]);
     }

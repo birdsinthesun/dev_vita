@@ -8,8 +8,8 @@ services:
         public: true
         
     Bits\DevVitaBundle\Service\ComposerInfoFetcher:
-    arguments:
-      $githubToken: '%env(GITHUB_PAT)%'
+        tags: [container.service_subscriber]
+        public: true
         
     Bits\DevVitaBundle\Controller\:
         resource: '../src/Controller' # Pfad relativ zur services.yaml

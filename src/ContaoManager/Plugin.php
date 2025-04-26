@@ -12,7 +12,8 @@ use Bits\DevVitaBundle\DevVitaBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 
-class Plugin implements BundlePluginInterface,  RoutingPluginInterface
+
+class Plugin implements BundlePluginInterface,RoutingPluginInterface
 {
     public function build(ContainerBuilder $container)
     {
@@ -41,4 +42,6 @@ class Plugin implements BundlePluginInterface,  RoutingPluginInterface
                 ]),
         ];
     }
+    
+    
 }
