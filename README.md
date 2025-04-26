@@ -14,3 +14,8 @@ Die Repositories können von verschiedenen GitHub-Projekten sein.
 ## + zukünftiges Feature
 
 - Lazy Load für das Frontend-Modul
+
+## GitHub verlangt auch für public Repos einen Token
+
+Hier kann man einen zeitlich unbegrenzten Token für alle seine Repos generieren (Token classic)
+https://github.com/settings/tokens
