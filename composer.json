@@ -1,7 +1,7 @@
 {
     "name": "birdsinthesun/dev_vita",
     "type": "contao-bundle",
-    "description": "Vita für Developer, ganz einfach von GitHub über die composer.json (wird gerade ganz frisch gecoded, dauert noch paar Tage)",
+    "description": "Vita für Developer, ganz einfach von GitHub über die composer.json. Public Repositories funktionieren schon. Private sind noch nicht fertig.)",
     "keywords":["contao","github","vita","portfolio","referenzen","developer","programmierer","api","dev_vita"],
     "homepage":"https://github.com/birdsinthesun/dev_vita",
     "license": "MIT",
