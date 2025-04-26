@@ -20,7 +20,7 @@ $GLOBALS['TL_DCA']['tl_dev_vita'] = [
     ],
     'palettes' => [
         '__selector__' => ['repo_type'],
-        'default' => '{general_legend},contributor,repository,branch,repo_type,created_at;{meta_legend},sorting',
+        'default' => '{general_legend},contributor,repository,branch,repo_type,created_at',
         
     ],
     'subpalettes' => [
